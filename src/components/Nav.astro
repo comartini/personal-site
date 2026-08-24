@@ -1,0 +1,58 @@
+---
+// Structural navigation — adding/renaming/reordering these links is a code
+// change, not a content edit (edit this file directly if you ever need to).
+const links = [
+  { href: '/about', label: 'About' },
+  { href: '/academic', label: 'Academic' },
+  { href: '/teaching', label: 'Teaching' },
+  { href: '/editorial', label: 'Editorial' },
+  { href: '/fiction', label: 'Fiction' },
+];
+---
+<style>
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 64px;
+    height: 88px;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-hairline);
+    font-family: var(--font-sans);
+  }
+  .wordmark {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+  .wordmark:hover { color: var(--color-accent-hover); }
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+  .nav-link {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .nav-link:hover { color: var(--color-accent-hover); }
+  @media (max-width: 640px) {
+    .nav { padding: 0 20px; }
+    .links { gap: 18px; }
+  }
+</style>
+<div class="nav">
+  <a href="/" class="wordmark">Connor Martini</a>
+  <div class="links">
+    {links.map(link => <a href={link.href} class="nav-link">{link.label}</a>)}
+  </div>
+</div>

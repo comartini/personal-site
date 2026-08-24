@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const items = await getCollection('fiction');
+  return items.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+const isPlaceholder = item.data.placeholder;
+---
+<BaseLayout title={item.data.title}>
+  <div style="max-width:720px; margin:0 auto; padding:96px 32px 0 32px; font-family:var(--font-sans);">
+    <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent); font-weight:600;">Fiction · {item.data.title}</div>
+  </div>
+
+  <div style="max-width:720px; margin:0 auto; padding:18px 32px 0 32px;">
+    <h1 style="font-size:38px; line-height:1.18;">{item.data.title}</h1>
+    <div class="article-dek" class:list={{ 'is-placeholder': false }} style={isPlaceholder ? 'color:var(--color-placeholder-body); font-style:italic;' : ''}>{item.data.dek}</div>
+  </div>
+
+  <div class="prose" style={`max-width:720px; margin:0 auto; padding:0 32px; ${isPlaceholder ? 'color:var(--color-placeholder-body); font-style:italic;' : ''}`}>
+    <Content />
+  </div>
+
+  <div class:list={['pull-quote', { 'is-placeholder': isPlaceholder }]}>
+    <p>{item.data.pullQuote}</p>
+  </div>
+
+  <div class:list={['article-closing', { 'is-placeholder': isPlaceholder }]} style="max-width:720px; margin:0 auto; padding:0 32px 100px 32px;">
+    <p>{item.data.status}</p>
+  </div>
+</BaseLayout>

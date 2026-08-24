@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, getCollection, render } from 'astro:content';
+
+const teaching = await getEntry('teaching', 'index');
+const { Content } = await render(teaching);
+
+const courses = (await getCollection('teachingCourses')).sort((a, b) => a.data.order - b.data.order);
+const courseContent = await Promise.all(courses.map(async (c) => ({ data: c.data, Content: (await render(c)).Content })));
+---
+<BaseLayout title="Teaching">
+  <style>
+    .head { padding: 96px 32px 8px 32px; }
+    .head h1 { font-size: 38px; line-height: 1.18; }
+    .philosophy { padding: 0 32px; display: flex; flex-direction: column; gap: 22px; }
+    .courses-wrap { margin: 56px auto 0 auto; padding: 0 32px; }
+    .courses-inner { border-top: 1px solid var(--color-hairline); padding-top: 36px; }
+    .courses-label {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .course-list { display: flex; flex-direction: column; gap: 32px; }
+    .course-title-row { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .course-title-text { font-family: var(--font-serif); font-size: 22px; font-weight: 500; color: var(--color-ink); }
+    a.course-link:hover .course-title-text { text-decoration: underline; text-underline-offset: 4px; }
+    .course-description :global(p) { font-family: var(--font-serif); font-size: 16px; line-height: 1.65; color: var(--color-muted); margin: 0; }
+    .bottom-space { padding: 56px 32px 100px 32px; }
+  </style>
+
+  <div class="wrap-narrow head" style="max-width:720px; margin:0 auto;">
+    <div class="kicker" style="margin-bottom:18px;">{teaching.data.kicker}</div>
+    <h1>{teaching.data.title}</h1>
+  </div>
+
+  <div class="philosophy prose" style="max-width:720px; margin:0 auto;">
+    <Content />
+  </div>
+
+  <div class="courses-wrap" style="max-width:720px;">
+    <div class="courses-inner">
+      <div class="courses-label">Courses Designed</div>
+      <div class="course-list">
+        {courseContent.map(({ data, Content: CourseBody }) => (
+          <div>
+            {data.syllabusUrl ? (
+              <a href={data.syllabusUrl} class="course-link" target="_blank" rel="noopener">
+                <span class="course-title-row">
+                  <span class="course-title-text">{data.title}</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                </span>
+              </a>
+            ) : (
+              <span class="course-title-row">
+                <span class="course-title-text">{data.title}</span>
+              </span>
+            )}
+            <div class="course-description"><CourseBody /></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-space" style="max-width:720px; margin:0 auto;"></div>
+</BaseLayout>

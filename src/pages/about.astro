@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const about = await getEntry('about', 'index');
+const { Content } = await render(about);
+---
+<BaseLayout title="About">
+  <style>
+    .about-kicker { padding: 96px 32px 0 32px; }
+    .about-body {
+      padding: 20px 32px 100px 32px;
+      display: flow-root;
+    }
+    .about-body :global(img) {
+      float: left;
+      width: 220px;
+      height: 275px;
+      object-fit: cover;
+      object-position: center top;
+      margin: 4px 28px 16px 0;
+      background: oklch(0.9 0.01 75);
+    }
+  </style>
+  <div class="wrap about-kicker">
+    <div class="kicker">{about.data.kicker}</div>
+  </div>
+  <div class="wrap about-body prose">
+    <img src={about.data.photo} alt={about.data.photoAlt} />
+    <Content />
+  </div>
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const page = await getEntry('academicPages', 'dissertation');
+const { Content } = await render(page);
+---
+<BaseLayout title={page.data.title}>
+  <div class="wrap-narrow" style="max-width:720px; margin:0 auto; padding:96px 32px 0 32px; font-family:var(--font-sans);">
+    <div style="font-size:13px; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-accent); font-weight:600;">{page.data.kicker}</div>
+  </div>
+
+  <div style="max-width:720px; margin:0 auto; padding:18px 32px 0 32px;">
+    <h1 style="font-size:38px; line-height:1.18;">{page.data.title}</h1>
+    <div class="article-dek">{page.data.dek}</div>
+  </div>
+
+  <div class="prose" style="max-width:720px; margin:0 auto; padding:0 32px;">
+    <Content />
+  </div>
+
+  <div class="pull-quote">
+    <p>{page.data.pullQuote}</p>
+  </div>
+
+  <div class="article-closing" style="max-width:720px; margin:0 auto; padding:0 32px 100px 32px;">
+    <p>{page.data.closing}</p>
+  </div>
+</BaseLayout>

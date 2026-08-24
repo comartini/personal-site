@@ -1,0 +1,159 @@
+:root {
+  --color-bg: oklch(0.975 0.003 250);
+  --color-bg-footer: oklch(0.93 0.004 250);
+  --color-hairline: oklch(0.85 0.012 75);
+  --color-hub-divider: oklch(0.85 0.008 250);
+  --color-ink: oklch(0.24 0.02 50);
+  --color-body: oklch(0.3 0.02 50);
+  --color-muted: oklch(0.46 0.02 50);
+  --color-placeholder-title: oklch(0.4 0.02 50);
+  --color-placeholder-body: oklch(0.6 0.02 50);
+  --color-accent: oklch(0.42 0.045 250);
+  --color-accent-hover: oklch(0.32 0.045 250);
+
+  --font-serif: 'Newsreader', serif;
+  --font-sans: 'Jost', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-body);
+  font-family: var(--font-serif);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img { max-width: 100%; }
+
+.kicker {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.wrap--narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+h1 {
+  font-family: var(--font-serif);
+  font-size: 42px;
+  line-height: 1.15;
+  font-weight: 500;
+  color: var(--color-ink);
+  margin: 0 0 26px 0;
+}
+
+.prose p {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--color-body);
+  margin: 0 0 22px 0;
+}
+.prose p:last-child { margin-bottom: 0; }
+.prose em { font-style: italic; }
+
+/* Hub / entry list (Academic, Editorial, Fiction, Public Scholarship) */
+.entry-list {
+  display: flex;
+  flex-direction: column;
+}
+.entry-list a.entry-row {
+  display: block;
+  padding: 32px 0;
+  text-decoration: none;
+}
+.entry-divider {
+  width: 75%;
+  margin: 0 auto;
+  height: 2px;
+  background: var(--color-hub-divider);
+}
+.entry-row-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+.entry-title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+.entry-title.is-placeholder {
+  color: var(--color-placeholder-title);
+  font-style: italic;
+}
+.entry-description {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-muted);
+  max-width: 520px;
+  margin: 0;
+}
+.entry-description.is-placeholder {
+  color: var(--color-placeholder-body);
+  font-style: italic;
+}
+.entry-cta {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-accent);
+  white-space: nowrap;
+  padding-top: 6px;
+}
+
+/* Article-style subpage (dissertation, Pale Red Dot, Ghosts of the Future) */
+.article-dek {
+  font-size: 19px;
+  font-style: italic;
+  color: var(--color-muted);
+  margin-bottom: 44px;
+}
+.pull-quote {
+  max-width: 580px;
+  margin: 52px auto;
+  padding: 36px 0;
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+  text-align: center;
+}
+.pull-quote p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 23px;
+  line-height: 1.55;
+  color: var(--color-ink);
+  margin: 0;
+}
+.pull-quote.is-placeholder p { color: var(--color-placeholder-body); }
+.article-closing {
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--color-body);
+}
+.article-closing.is-placeholder {
+  color: var(--color-placeholder-body);
+  font-style: italic;
+}

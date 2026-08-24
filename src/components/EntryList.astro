@@ -1,0 +1,32 @@
+---
+// Shared list used by the Academic, Editorial, Fiction, and Public
+// Scholarship hub-style pages. Pass an array of entries; a divider line
+// is placed automatically between them (not after the last one).
+interface Entry {
+  href: string;
+  title: string;
+  description: string;
+  ctaLabel: string;
+  placeholder?: boolean;
+}
+interface Props {
+  entries: Entry[];
+}
+const { entries } = Astro.props as Props;
+---
+<div class="wrap entry-list" style="padding: 44px 32px 100px 32px;">
+  {entries.map((entry, i) => (
+    <>
+      <a href={entry.href} class="entry-row">
+        <div class="entry-row-inner">
+          <div>
+            <div class:list={['entry-title', { 'is-placeholder': entry.placeholder }]}>{entry.title}</div>
+            <p class:list={['entry-description', { 'is-placeholder': entry.placeholder }]}>{entry.description}</p>
+          </div>
+          <div class="entry-cta">{entry.ctaLabel}</div>
+        </div>
+      </a>
+      {i < entries.length - 1 && <div class="entry-divider"></div>}
+    </>
+  ))}
+</div>

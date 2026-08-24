@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryList from '../../components/EntryList.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('publicScholarship')).sort((a, b) => a.data.order - b.data.order);
+const entries = items.map((item) => ({
+  href: item.data.href,
+  title: item.data.title,
+  description: item.data.venue,
+  ctaLabel: 'Visit →',
+  placeholder: item.data.placeholder,
+}));
+---
+<BaseLayout title="Public Scholarship">
+  <div class="wrap" style="padding:96px 32px 8px 32px;">
+    <div class="kicker" style="margin-bottom:18px;">Academic · Public Scholarship</div>
+    <h1>Public Scholarship</h1>
+    <p style="font-size:18px; line-height:1.7; color:var(--color-body); max-width:640px; margin:0;">Writing and appearances for a general audience, outside the academic press.</p>
+  </div>
+  <EntryList entries={entries} />
+</BaseLayout>

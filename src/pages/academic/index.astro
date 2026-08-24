@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EntryList from '../../components/EntryList.astro';
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('academicHub')).sort((a, b) => a.data.order - b.data.order);
+const entries = items.map((item) => ({
+  href: item.data.href,
+  title: item.data.title,
+  description: item.data.description,
+  ctaLabel: item.data.external ? 'Visit →' : 'Read →',
+}));
+---
+<BaseLayout title="Academic">
+  <div class="wrap" style="padding:96px 32px 8px 32px;">
+    <div class="kicker" style="margin-bottom:18px;">Academic</div>
+    <h1>Academic Work</h1>
+    <p style="font-size:18px; line-height:1.7; color:var(--color-body); max-width:640px; margin:0;">Connor's academic work moves between long-form ethnography and shorter public-facing writing, circling the same questions about religion, science, and the stories we tell about an uncertain future.</p>
+  </div>
+  <EntryList entries={entries} />
+</BaseLayout>
