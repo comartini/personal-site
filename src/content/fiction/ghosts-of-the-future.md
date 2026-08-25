@@ -3,8 +3,8 @@ title: Ghosts of the Future
 cardDescription: A story about finding love in a deathless world, and saving the future from a culture obsessed with the past.
 dek: A story about finding love in a deathless world, and saving the future from a culture obsessed with the past.
 pullQuote: "By 2057, death has largely become a thing of the past."
-status: Complete
-placeholder: true
+status: Pale Red Dot is Complete.
+placeholder: false
 order: 1
 ---
 By 2057, death has largely become a thing of the past. The advent of Eidolon technology allows for the summoning of a dead person's soul into a smartphone-like device. Ghosts in the machine are commonplace-they're your neighbors, colleagues, and sometimes even boyfriends. 
