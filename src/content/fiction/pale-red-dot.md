@@ -5,7 +5,7 @@ dek: A Novel
 pullQuote: A story about the histories we're taught, the ones we're not, and what it costs to tell the difference.
 status: Pale Red Dot is complete.
 placeholder: false
-order: 1
+order: 2
 ---
 On Mars, everyone knows the story: that Mars has always been home, that a virulent pathogen once drove the first settlers into their shielded habitats, and that beyond the dust there was nothing worth remembering. Lee Weir has never questioned it — until he finds an antique book by Carl Sagan among his grandmother's belongings, and the official history starts to come apart in his hands.
 
