@@ -8,6 +8,7 @@ All of the site's editable text lives in `src/content/`, as plain markdown files
 
 Each subfolder of `src/content/` is one kind of content:
 
+
 | Folder | What it is | How to edit |
 |---|---|---|
 | `home/index.md` | Homepage hero kicker, name, and bio paragraph | Edit the file directly |
