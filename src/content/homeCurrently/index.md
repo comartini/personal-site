@@ -1,4 +1,4 @@
 ---
 kicker: Currently
 ---
-Turning my dissertation into a book — <span class="normal">The Evidence of Things Not Seen</span> — an ethnography of SETI researchers and the practices of enchantment they share.
+Preparing his monograph manuscript and proposal, writing an article about why UFOs aren't real, and putting the finishing touches on his most recent novel.
