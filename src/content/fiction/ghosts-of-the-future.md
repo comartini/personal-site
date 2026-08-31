@@ -3,7 +3,7 @@ title: Ghosts of the Future
 cardDescription: A story about finding love in a deathless world, and saving the future from a culture obsessed with the past.
 dek: A story about finding love in a deathless world, and saving the future from a culture obsessed with the past.
 pullQuote: "By 2057, death has largely become a thing of the past."
-status:
+status: Ghosts of the Future will be going on submission to major publishers in Fall 2026
 placeholder: false
 order: 1
 ---
