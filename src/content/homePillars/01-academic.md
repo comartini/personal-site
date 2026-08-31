@@ -3,4 +3,4 @@ label: Academic
 href: /academic
 order: 1
 ---
-An ethnography of radio astronomers and the religious dimensions of the search for extraterrestrial intelligence.
+Connor's work explores how scientists and others confront and understand the unknown and unknowable and how this relates to the epistemologies and ontologies of modernity.
